@@ -11,16 +11,16 @@ namespace CSGO
 	public:
 		int GetHighestEntityIndex(void)
 		{
-			typedef int(__thiscall* fnGetHighestIndex)(void*);
+			typedef int(__thiscall* oGetHighestIndex)(void*);
 
-			return getvfunc<fnGetHighestIndex>(this, 6)(this);
+			return getvfunc<oGetHighestIndex>(this, 6)(this);
 		}
 
 		CSGO::BaseEntity* GetClientEntity(int index)
 		{
-			typedef BaseEntity*(__thiscall* fnClientEnt)(void*, int);
+			typedef BaseEntity*(__thiscall* oClientEnt)(void*, int);
 
-			return getvfunc<fnClientEnt>(this, 3)(this, index);
+			return getvfunc<oClientEnt>(this, 3)(this, index);
 		}
 	};
 }
