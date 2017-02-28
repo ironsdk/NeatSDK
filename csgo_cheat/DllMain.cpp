@@ -32,6 +32,12 @@ void __stdcall CreateMove(float sampleTime, CSGO::UserCmd* cmd)
 */
 void __stdcall OverrideView(CSGO::ViewSetup* setup)
 {
+	/*
+		change these to wahtever you like,
+		was just palying around too see if
+		the hook was working.
+	*/
+	
 	setup->angles.x = setup->width;
 	setup->angles.y = setup->height;
 	setup->m_nMotionBlurMode = 0;
