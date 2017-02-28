@@ -94,6 +94,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 		overrideViewVMT->UnHook();
 		baseClientDLLVMT->UnHook();
 
+		delete newInterface;
 		delete clientModeVMT;
 		delete overrideViewVMT;
 		delete baseClientDLLVMT;
