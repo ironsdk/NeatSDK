@@ -24,6 +24,13 @@ CSGO::ConVar* name = cVar->FindVar("name");
 */
 void __stdcall CreateMove(float sampleTime, CSGO::UserCmd* cmd)
 {
+	CSGO::BaseEntity* baseEntity = (CSGO::BaseEntity*)entList->GetClientEntity(eng->GetLocalPlayer());
+
+	if (GetAsyncKeyState(VK_UP))
+	{
+		cmd->tick_count = INT_MAX;
+	}
+
 	createMoveHook(clientMode, sampleTime, cmd);
 }
 
@@ -32,19 +39,9 @@ void __stdcall CreateMove(float sampleTime, CSGO::UserCmd* cmd)
 */
 void __stdcall OverrideView(CSGO::ViewSetup* setup)
 {
-	/*
-		change these to wahtever you like,
-		was just palying around too see if
-		the hook was working.
-	*/
+	CSGO::BaseEntity* baseEntity = (CSGO::BaseEntity*)entList->GetClientEntity(eng->GetLocalPlayer());
 	
-	setup->angles.x = setup->width;
-	setup->angles.y = setup->height;
-	setup->m_nMotionBlurMode = 0;
-	setup->m_flFarBlurDepth = 0;
-	setup->m_flFarFocusDepth = 0;
-	setup->m_flFarBlurRadius = 0;
-	setup->origin = CSGO::Vector(setup->angles.x, setup->angles.y, setup->angles.z);
+	std::cout << baseEntity->GetVecOrigin().x << std::endl;
 
 	overrideViewHook(clientMode, setup);
 }
@@ -88,7 +85,18 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 	switch (fdwReason)
 	{
 	case DLL_PROCESS_ATTACH:
-		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Init, 0, 0, 0); 
+		HANDLE thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Init, 0, 0, 0);
+
+		break;
+	case DLL_PROCESS_DETACH:
+		FreeLibraryAndExitThread((HMODULE)thread, 0x1);
+		clientModeVMT->UnHook();
+		overrideViewVMT->UnHook();
+		baseClientDLLVMT->UnHook();
+
+		delete clientModeVMT;
+		delete overrideViewVMT;
+		delete baseClientDLLVMT;
 		break;
 	}
 
