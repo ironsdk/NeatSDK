@@ -11,6 +11,8 @@ namespace CSGO
 	{
 	public:
 		// got this from TGF aswell, 
+		// ignore the typedef that doesn't really follow my other styles
+		// i just chose to change the names to original when I made this class
 		void SetValue(const char* value)
 		{
 			typedef void(__thiscall* original)(void*, const char*);
