@@ -14,6 +14,10 @@ namespace CSGO
 	class BaseEntity
 	{
 	public:
+		/*
+			fix indexes later. As of now this isn't fully working.
+			forgot about that before I released. will fix tonight
+		*/
 		typedef int(__thiscall* oGetTeam)(void*);
 		typedef void(__thiscall* fnRenderBounds)(void*, Vector&, Vector&);
 		typedef bool(__thiscall* fnAlive)(void*);
