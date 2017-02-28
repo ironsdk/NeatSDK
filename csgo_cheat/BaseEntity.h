@@ -19,26 +19,26 @@ namespace CSGO
 			forgot about that before I released. will fix tonight
 		*/
 		typedef int(__thiscall* oGetTeam)(void*);
-		typedef void(__thiscall* fnRenderBounds)(void*, Vector&, Vector&);
-		typedef bool(__thiscall* fnAlive)(void*);
+		typedef void(__thiscall* oRenderBounds)(void*, Vector&, Vector&);
+		typedef bool(__thiscall* oAlive)(void*);
 
 		void GetRenderBounds(Vector& min, Vector& max)
 		{
 			void* renderable = (PVOID)(this + 0x4);
 
-			return getvfunc<fnRenderBounds>(this, 20)(renderable, min, max);
+			return getvfunc<oRenderBounds>(this, 20)(renderable, min, max);
 		}
 
 		bool IsAlive()
 		{
-			return getvfunc<fnAlive>(this, 200)(this);
+			return getvfunc<oAlive>(this, 200)(this);
 		}
 
 		bool IsPlayer()
 		{
-			typedef bool(__thiscall* fnPlayer)(void*);
+			typedef bool(__thiscall* oPlayer)(void*);
 
-			return getvfunc<fnPlayer>(this, 202)(this);
+			return getvfunc<oPlayer>(this, 202)(this);
 		}
 
 		bool IsDormant()
