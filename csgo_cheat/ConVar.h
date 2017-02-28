@@ -10,6 +10,7 @@ namespace CSGO
 	class ConVar
 	{
 	public:
+		// got this from TGF aswell, 
 		void SetValue(const char* value)
 		{
 			typedef void(__thiscall* original)(void*, const char*);
