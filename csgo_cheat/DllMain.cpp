@@ -6,6 +6,8 @@ CVMTHookManager* clientModeVMT;
 CVMTHookManager* baseClientDLLVMT;
 CVMTHookManager* overrideViewVMT;
 
+HANDLE thread = 0;
+
 Hooks::oCreateMove createMoveHook;
 Hooks::oOverrideView  overrideViewHook;
 
@@ -41,7 +43,7 @@ void __stdcall OverrideView(CSGO::ViewSetup* setup)
 {
 	CSGO::BaseEntity* baseEntity = (CSGO::BaseEntity*)entList->GetClientEntity(eng->GetLocalPlayer());
 	
-	std::cout << baseEntity->GetVecOrigin().x << std::endl;
+	setup->fov = 135.0;
 
 	overrideViewHook(clientMode, setup);
 }
@@ -85,7 +87,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 	switch (fdwReason)
 	{
 	case DLL_PROCESS_ATTACH:
-		HANDLE thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Init, 0, 0, 0);
+		thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Init, 0, 0, 0);
 
 		break;
 	case DLL_PROCESS_DETACH:
@@ -94,7 +96,6 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 		overrideViewVMT->UnHook();
 		baseClientDLLVMT->UnHook();
 
-		delete newInterface;
 		delete clientModeVMT;
 		delete overrideViewVMT;
 		delete baseClientDLLVMT;
