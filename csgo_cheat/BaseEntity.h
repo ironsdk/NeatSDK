@@ -49,7 +49,7 @@ namespace CSGO
 
 		int GetFlags()
 		{
-			return (int)((DWORD)this + (DWORD)0x100);
+			return *(int*)((DWORD)this + (DWORD)0x100);
 		}
 
 		Vector& GetVecOrigin()
