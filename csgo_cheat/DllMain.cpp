@@ -28,11 +28,6 @@ void __stdcall CreateMove(float sampleTime, CSGO::UserCmd* cmd)
 {
 	CSGO::BaseEntity* baseEntity = (CSGO::BaseEntity*)entList->GetClientEntity(eng->GetLocalPlayer());
 
-	if (GetAsyncKeyState(VK_UP))
-	{
-		cmd->tick_count = INT_MAX;
-	}
-
 	createMoveHook(clientMode, sampleTime, cmd);
 }
 
