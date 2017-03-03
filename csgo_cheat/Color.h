@@ -1,5 +1,4 @@
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 
 namespace CSGO
 {
@@ -30,5 +29,3 @@ namespace CSGO
 
 	};
 }
-
-#endif
