@@ -2,6 +2,7 @@
 
 Interface::InterfaceTools* newInterface = new Interface::InterfaceTools;
 
+CVMTHookManager* paintTraverseVMT;
 CVMTHookManager* clientModeVMT;
 CVMTHookManager* baseClientDLLVMT;
 CVMTHookManager* overrideViewVMT;
@@ -17,9 +18,19 @@ CSGO::Engine* eng;
 CSGO::ClientMode* clientMode;
 CSGO::BaseClientDLL* baseClientDLL;
 CSGO::ClientModeShared* clientModeShared;
+CSGO::Panel* panel = (CSGO::Panel*)newInterface->GetInterface("vgui2.dll", "VGUI_Panel009");
 CSGO::ClientEntityList* entList = (CSGO::ClientEntityList*)newInterface->GetInterface("client.dll", "VClientEntityList003");
 CSGO::CVar* cVar = (CSGO::CVar*)newInterface->GetInterface("materialsystem.dll", "VEngineCvar007");
 CSGO::ConVar* name = cVar->FindVar("name");
+CSGO::Surface* surf = (CSGO::Surface*)newInterface->GetInterface("vguimatsurface.dll", "VGUI_Surface031");
+
+/*
+	PaintTraverse
+*/
+void __stdcall PaintTraverse(int vguiID, bool force, bool allowForcing)
+{
+	paintTraverseHook(panel, vguiID, force, allowForcing);
+}
 
 /*
 	CreateMove
@@ -72,6 +83,9 @@ void Init()
 	overrideViewVMT = new CVMTHookManager((DWORD**)clientMode);
 	overrideViewHook = (Hooks::oOverrideView)overrideViewVMT->HookMethod((DWORD)OverrideView, 18);
 
+	paintTraverseVMT = new CVMTHookManager((DWORD**)panel);
+	paintTraverseHook = (Hooks::oPaintTraverse)paintTraverseVMT->HookMethod((DWORD)PaintTraverse, 41);
+	
 	// also got this from TGF
 	*(int*)((DWORD)&name->fnChangeCallback + 0xC) = NULL;
 	name->SetValue("Verideth is gawd");
