@@ -1,5 +1,4 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 
 namespace CSGO
 {
@@ -32,5 +31,3 @@ namespace CSGO
 		float LengthSqr(void) { return (x*x + y*y + z*z); }
 	};
 }
-
-#endif
