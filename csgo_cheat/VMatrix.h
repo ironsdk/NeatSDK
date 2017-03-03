@@ -1,5 +1,4 @@
-#ifndef VMATRIX_H
-#define VMATRX_H
+#pragma once
 
 namespace CSGO
 {
@@ -77,5 +76,3 @@ namespace CSGO
 		float m_flMatVal[3][4];
 	};
 }
-
-#endif
