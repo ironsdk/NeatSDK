@@ -1,5 +1,4 @@
-#ifndef INTERFACE_H
-#define INTERFACE_H
+#pragma once
 
 typedef void* (*oInterface)(char*, int); 
 
@@ -16,5 +15,3 @@ namespace Interface
 		}
 	};
 }
-
-#endif
