@@ -23,6 +23,7 @@ CSGO::Panel* panel = (CSGO::Panel*)newInterface->GetInterface("vgui2.dll", "VGUI
 CSGO::ClientEntityList* entList = (CSGO::ClientEntityList*)newInterface->GetInterface("client.dll", "VClientEntityList003");
 CSGO::CVar* cVar = (CSGO::CVar*)newInterface->GetInterface("materialsystem.dll", "VEngineCvar007");
 CSGO::ConVar* name = cVar->FindVar("name");
+CSGO::Panel* panel = (CSGO::Panel*)newInterface->GetInterface("vgui2.dll", "VGUI_Panel009");
 CSGO::Surface* surf = (CSGO::Surface*)newInterface->GetInterface("vguimatsurface.dll", "VGUI_Surface031");
 
 /*
@@ -64,7 +65,6 @@ void Init()
 
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "w", stdout);
-	//freopen("CONOUT$", "w", stderr);
 
 	SetConsoleTitle("FLI_Hook");
 
