@@ -1,5 +1,4 @@
-#ifndef CVAR_H
-#define CVAR_H
+#pragma once
 
 #include "ConVar.h"
 #include "getvfunc.h"
@@ -17,5 +16,3 @@ namespace CSGO
 		}
 	};
 }
-
-#endif
