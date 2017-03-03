@@ -1,5 +1,4 @@
-#ifndef CHAT_H
-#define CHAT_H
+#pragma once
 
 #include <iostream>
 #include <cstdlib>
@@ -19,5 +18,3 @@ namespace CSGO
 		}
 	};
 }
-
-#endif
