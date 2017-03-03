@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include "getvfunc.h"
+#include "Surface.h"
+
+extern CSGO::Surface* surf;
 
 enum FontFlags
 {
