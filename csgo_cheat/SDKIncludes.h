@@ -21,3 +21,5 @@
 #include "CVar.h"
 #include "ViewSetup.h"
 #include "Render.h"
+#include "Surface.h"
+#include "Panel.h"
