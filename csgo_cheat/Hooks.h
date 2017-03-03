@@ -1,5 +1,4 @@
-#ifndef HOOKS_H
-#define HOOKS_H
+#pragma once
 
 #include "ViewSetup.h"
 #include "UserCmd.h"
@@ -13,6 +12,5 @@ namespace Hooks
 {
 	typedef void(__thiscall* oCreateMove)(void*, float, CSGO::UserCmd*);
 	typedef void(__thiscall* oOverrideView)(void*, CSGO::ViewSetup* setup);
+	typedef void(__thiscall* oPaintTraverse)(void*, unsigned int, bool, bool);
 }
-
-#endif
