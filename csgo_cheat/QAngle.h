@@ -1,5 +1,4 @@
-#ifndef QANGLE_H
-#define QANGLE_H
+#pragma once
 
 #include <Windows.h>
 #include <iostream>
@@ -176,5 +175,3 @@ public:
 	QAngleByValue(vec_t X, vec_t Y, vec_t Z) : CSGO::QAngle(X, Y, Z) {}
 	QAngleByValue(const QAngleByValue& vOther) { *this = vOther; }
 };
-
-#endif
