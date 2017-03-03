@@ -1,5 +1,4 @@
-#ifndef BASEENTITY_H
-#define BASEENTITY_H
+#pragma once
 
 #include <iostream>
 #include <Windows.h>
@@ -68,5 +67,3 @@ namespace CSGO
 		}
 	};
 }
-
-#endif
