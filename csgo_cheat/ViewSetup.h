@@ -1,5 +1,4 @@
-#ifndef VIEWSETUP_H
-#define VIEWSETUP_H
+#pragma once
 
 #include "QAngle.h"
 #include "Vector.h"
@@ -40,5 +39,3 @@ namespace CSGO
 		__int32 m_EdgeBlur;
 	};
 }
-
-#endif
