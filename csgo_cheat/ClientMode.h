@@ -1,5 +1,4 @@
-#ifndef CLIENTMODE_H
-#define CLIENTMODE_H
+#pragma once
 
 #include "Chat.h"
 #include <cstdint>
@@ -12,5 +11,3 @@ namespace CSGO
 		// new stuff coming in next update
 	};
 }
-
-#endif
