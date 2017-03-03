@@ -1,5 +1,4 @@
-#ifndef CLIENTMODESHARED_H
-#define CLIENTMODESHARED_H
+#pragma once
 
 #include "Chat.h"
 
@@ -11,5 +10,3 @@ namespace CSGO
 		CSGO::BaseHudChat* chatElement;
 	};
 }
-
-#endif
