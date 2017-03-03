@@ -1,5 +1,4 @@
-#ifndef HOOKMANAGER_H
-#define HOOKMANAGER_H
+#pragma once
 
 #include <Windows.h>
 
@@ -108,5 +107,3 @@ private:
 		return dwIndex;
 	}
 };
-
-#endif
