@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include "getvfunc.h"
+
 enum FontFlags
 {
 	FONTFLAG_NONE,
