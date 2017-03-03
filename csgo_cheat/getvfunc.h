@@ -1,5 +1,4 @@
-#ifndef GETVFUNC_H
-#define GETVFUNC_H
+#pragma once
 
 /* credits @uc */
 template<typename Function>Function getvfunc(void*_VMT, int Index)
@@ -9,5 +8,3 @@ template<typename Function>Function getvfunc(void*_VMT, int Index)
 	void*_Address = VMT[Index];
 	return(Function)(_Address);
 }
-
-#endif
