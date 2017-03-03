@@ -1,5 +1,4 @@
-#ifndef BASECLIENTDLL_H
-#define BASECLIENTDLL_H
+#pragma once
 
 namespace CSGO
 {
@@ -9,5 +8,3 @@ namespace CSGO
 
 	};
 }
-
-#endif
