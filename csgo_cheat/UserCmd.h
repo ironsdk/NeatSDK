@@ -1,5 +1,4 @@
-#ifndef USERCMD_H
-#define USERCMD_H
+#pragma once
 
 #include "Vector.h"
 
@@ -29,5 +28,3 @@ namespace CSGO
 		bool hasBeenPredicted;
 	};
 }
-
-#endif
