@@ -1,5 +1,4 @@
-#ifndef  SDK_H
-#define SDK_H
+#pragma once
 
 #include "BaseEntity.h"
 #include <iostream>
@@ -21,5 +20,4 @@
 #include "ConVar.h"
 #include "CVar.h"
 #include "ViewSetup.h"
-
-#endif
+#include "Render.h"
