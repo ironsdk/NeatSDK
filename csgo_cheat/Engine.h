@@ -1,5 +1,4 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#pragma once
 
 /*
 	Got all this from TGF source, 
@@ -286,5 +285,3 @@ namespace CSGO
 		virtual bool                  IsReplay(void) = 0;
 	};
 }
-
-#endif
