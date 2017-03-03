@@ -9,6 +9,7 @@ CVMTHookManager* overrideViewVMT;
 
 HANDLE thread = 0;
 
+Hooks::oPaintTraverse paintTraverseHook;
 Hooks::oCreateMove createMoveHook;
 Hooks::oOverrideView  overrideViewHook;
 
