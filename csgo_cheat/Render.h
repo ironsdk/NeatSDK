@@ -4,6 +4,7 @@
 #include "getvfunc.h"
 #include "Surface.h"
 #include <cstdarg>
+#include <Windows.h>
 
 extern CSGO::Surface* surf;
 
