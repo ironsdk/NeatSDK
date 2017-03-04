@@ -79,9 +79,8 @@ void Init()
 	
 	clientModeVMT = new CVMTHookManager((DWORD**)clientMode);
 	createMoveHook = (Hooks::oCreateMove)clientModeVMT->HookMethod((DWORD)CreateMove, 24);
-
-	overrideViewVMT = new CVMTHookManager((DWORD**)clientMode);
-	overrideViewHook = (Hooks::oOverrideView)overrideViewVMT->HookMethod((DWORD)OverrideView, 18);
+	
+	clientModeVMT = (Hooks::oOverrideView)overrideViewVMT->HookMethod((DWORD)OverrideView, 18);
 
 	paintTraverseVMT = new CVMTHookManager((DWORD**)panel);
 	paintTraverseHook = (Hooks::oPaintTraverse)paintTraverseVMT->HookMethod((DWORD)PaintTraverse, 41);
@@ -104,10 +103,12 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 		clientModeVMT->UnHook();
 		overrideViewVMT->UnHook();
 		baseClientDLLVMT->UnHook();
+		paintTraverseVMT->UnHook();
 
 		delete clientModeVMT;
 		delete overrideViewVMT;
 		delete baseClientDLLVMT;
+		delete paintTraverseVMT;
 		break;
 	}
 
