@@ -6,6 +6,8 @@
 #include <cstdarg>
 #include <Windows.h>
 
+#undef CreateFont
+
 extern CSGO::Surface* surf;
 
 enum FontFlags
