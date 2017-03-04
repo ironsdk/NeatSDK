@@ -3,6 +3,7 @@
 #include <iostream>
 #include "getvfunc.h"
 #include "Surface.h"
+#include <cstdarg>
 
 extern CSGO::Surface* surf;
 
