@@ -5,7 +5,6 @@ Interface::InterfaceTools* newInterface = new Interface::InterfaceTools;
 CVMTHookManager* paintTraverseVMT;
 CVMTHookManager* clientModeVMT;
 CVMTHookManager* baseClientDLLVMT;
-CVMTHookManager* overrideViewVMT;
 
 HANDLE thread = 0;
 
@@ -79,9 +78,8 @@ void Init()
 	
 	clientModeVMT = new CVMTHookManager((DWORD**)clientMode);
 	createMoveHook = (Hooks::oCreateMove)clientModeVMT->HookMethod((DWORD)CreateMove, 24);
-
-	overrideViewVMT = new CVMTHookManager((DWORD**)clientMode);
-	overrideViewHook = (Hooks::oOverrideView)overrideViewVMT->HookMethod((DWORD)OverrideView, 18);
+	
+	overrideViewHook = (Hooks::oOverrideView)clientModeVMT->HookMethod((DWORD)OverrideView, 18);
 
 	paintTraverseVMT = new CVMTHookManager((DWORD**)panel);
 	paintTraverseHook = (Hooks::oPaintTraverse)paintTraverseVMT->HookMethod((DWORD)PaintTraverse, 41);
@@ -102,12 +100,12 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, LPVOID lpVoid)
 	case DLL_PROCESS_DETACH:
 		FreeLibraryAndExitThread((HMODULE)thread, 0x1);
 		clientModeVMT->UnHook();
-		overrideViewVMT->UnHook();
 		baseClientDLLVMT->UnHook();
+		paintTraverseVMT->UnHook();
 
 		delete clientModeVMT;
-		delete overrideViewVMT;
 		delete baseClientDLLVMT;
+		delete paintTraverseVMT;
 		break;
 	}
 
